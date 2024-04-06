@@ -38,7 +38,7 @@ app.post("/users", async (request, reply) => {
 // Função para iniciar o servidor
 const start = async () => {
   try {
-    await app.listen(3333); // Você pode especificar a porta que preferir
+    await app.listen(process.env.PORT ? Number(process.env.PORT) : 3333); // Você pode especificar a porta que preferir
     console.log("Server listening on port 3333");
   } catch (err) {
     console.error(err);
