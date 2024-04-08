@@ -36,14 +36,18 @@ app.post("/users", async (request, reply) => {
 });
 
 // Função para iniciar o servidor
+// Função para iniciar o servidor
 const start = async () => {
+  const port = process.env.PORT ? Number(process.env.PORT) : 3333;
   try {
-    await app.listen(process.env.PORT ? Number(process.env.PORT) : 3333); // Você pode especificar a porta que preferir
-    console.log("Server listening on port 3333");
+    await app.listen(port, "0.0.0.0"); // Ouça em todas as interfaces de rede
+    console.log(`Server listening on port ${port}`);
   } catch (err) {
     console.error(err);
     process.exit(1);
   }
 };
+
+start();
 
 start(); // Inicie o servidor
